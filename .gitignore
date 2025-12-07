@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
+*.egg-info/
+dist/
+build/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# TenebriNET specific
+data/logs/*.log
+data/attacks.db
+config/secrets.yml
+*.key
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/

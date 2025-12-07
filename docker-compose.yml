@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  tenebrinet:
+    build: .
+    container_name: tenebrinet
+    ports:
+      - "2222:2222"  # SSH honeypot
+      - "8080:8080"  # HTTP honeypot
+      - "2121:2121"  # FTP honeypot
+      - "8000:8000"  # API
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - DATABASE_URL=postgresql://tenebrinet:tenebripass@postgres:5432/tenebrinet
+      - REDIS_URL=redis://redis:6379/0
+    volumes:
+      - ./data/logs:/app/data/logs
+      - ./config:/app/config
+    restart: unless-stopped
+    networks:
+      - tenebrinet-network
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: tenebrinet-db
+    environment:
+      - POSTGRES_USER=tenebrinet
+      - POSTGRES_PASSWORD=tenebripass
+      - POSTGRES_DB=tenebrinet
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - tenebrinet-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: tenebrinet-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - tenebrinet-network
+
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    container_name: tenebrinet-dashboard
+    ports:
+      - "3000:3000"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    depends_on:
+      - tenebrinet
+    networks:
+      - tenebrinet-network
+
+volumes:
+  postgres-data:
+  redis-data:
+
+networks:
+  tenebrinet-network:
+    driver: bridge
