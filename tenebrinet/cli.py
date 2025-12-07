@@ -284,6 +284,7 @@ async def _run_combined(cfg, api_port: int) -> None:
         )
 
     click.echo(f"   📶 API: http://0.0.0.0:{api_port}/docs")
+    click.echo(f"   🖥️  Dashboard: http://0.0.0.0:{api_port}/")
     click.echo("\n✅ All services started. Press Ctrl+C to stop.\n")
 
     # Run API server

@@ -9,6 +9,9 @@ from typing import AsyncGenerator
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+import os
 
 from tenebrinet import __version__
 from tenebrinet.api.routes import attacks, health
@@ -65,6 +68,12 @@ def create_app() -> FastAPI:
     app.include_router(health.router)
     app.include_router(attacks.router, prefix="/api/v1")
 
+    # Mount static files
+    static_path = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)), "dashboard", "static"
+    )
+    app.mount("/static", StaticFiles(directory=static_path), name="static")
+
     return app
 
 
@@ -73,15 +82,15 @@ app = create_app()
 
 
 @app.get("/", tags=["root"])
-async def root() -> dict:
+async def root() -> FileResponse:
     """
     Root endpoint.
 
-    Returns basic API information.
+    Serves the dashboard.
     """
-    return {
-        "name": "TenebriNET API",
-        "version": __version__,
-        "description": "Intelligent Honeypot Infrastructure",
-        "docs": "/docs",
-    }
+    dashboard_path = os.path.join(
+        os.path.dirname(os.path.dirname(__file__)),
+        "dashboard",
+        "index.html"
+    )
+    return FileResponse(dashboard_path)

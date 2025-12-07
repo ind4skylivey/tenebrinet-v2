@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TenebriNET // Panopticon</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <nav class="sidebar">
+        <div class="brand">
+          <i class="fa-solid fa-network-wired"></i>
+          <span>TenebriNET</span>
+        </div>
+        <ul class="nav-links">
+          <li class="active" data-tab="dashboard">
+            <i class="fa-solid fa-chart-line"></i> Dashboard
+          </li>
+          <li data-tab="attacks"><i class="fa-solid fa-bug"></i> Live Feed</li>
+          <li data-tab="map"><i class="fa-solid fa-map"></i> Threat Map</li>
+          <li data-tab="settings"><i class="fa-solid fa-cog"></i> Settings</li>
+        </ul>
+        <div class="status-panel">
+          <div class="status-item">
+            <span class="status-dot online"></span>
+            <span class="status-text">System Online</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Uptime:</span>
+            <span class="status-value" id="uptime">00:00:00</span>
+          </div>
+        </div>
+      </nav>
+
+      <main class="main-content">
+        <header class="top-bar">
+          <h1 id="page-title">Dashboard</h1>
+          <div class="top-actions">
+            <button id="refresh-btn" class="btn-icon">
+              <i class="fa-solid fa-sync"></i>
+            </button>
+            <div class="user-profile">
+              <img
+                src="https://ui-avatars.com/api/?name=Admin&background=0D8ABC&color=fff"
+                alt="Admin"
+              />
+              <span>Operator</span>
+            </div>
+          </div>
+        </header>
+
+        <div id="dashboard-view" class="view active">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon ssh">
+                <i class="fa-solid fa-terminal"></i>
+              </div>
+              <div class="stat-info">
+                <h3>SSH Attacks</h3>
+                <p class="stat-value" id="ssh-count">0</p>
+                <span class="stat-trend positive"
+                  ><i class="fa-solid fa-arrow-up"></i> 12%</span
+                >
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon http">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="stat-info">
+                <h3>HTTP Attacks</h3>
+                <p class="stat-value" id="http-count">0</p>
+                <span class="stat-trend positive"
+                  ><i class="fa-solid fa-arrow-up"></i> 5%</span
+                >
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon ftp">
+                <i class="fa-solid fa-folder-open"></i>
+              </div>
+              <div class="stat-info">
+                <h3>FTP Attacks</h3>
+                <p class="stat-value" id="ftp-count">0</p>
+                <span class="stat-trend negative"
+                  ><i class="fa-solid fa-arrow-down"></i> 2%</span
+                >
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon creds"><i class="fa-solid fa-key"></i></div>
+              <div class="stat-info">
+                <h3>Credentials</h3>
+                <p class="stat-value" id="cred-count">0</p>
+                <span class="stat-trend positive"
+                  ><i class="fa-solid fa-arrow-up"></i> 8%</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="charts-row">
+            <div class="chart-container">
+              <h2>Attack Trends (24h)</h2>
+              <canvas id="attacksChart"></canvas>
+            </div>
+            <div class="chart-container">
+              <h2>Threat Distribution</h2>
+              <canvas id="threatsChart"></canvas>
+            </div>
+          </div>
+
+          <div class="recent-activity">
+            <h2>Recent Interceptions</h2>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Service</th>
+                    <th>Source IP</th>
+                    <th>Threat Type</th>
+                    <th>Confidence</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-attacks-body">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="attacks-view" class="view">
+          <h2>Live Attack Feed</h2>
+          <div class="terminal-feed" id="terminal-feed">
+            <!-- Terminal style logs -->
+          </div>
+        </div>
+
+        <div id="map-view" class="view">
+          <h2>Global Threat Map</h2>
+          <div class="map-placeholder">
+            <p>Map visualization coming soon...</p>
+            <!-- Placeholder for Leaflet map -->
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
