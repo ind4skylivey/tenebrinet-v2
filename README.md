@@ -1,5 +1,5 @@
 <div align="center">
-<img width="3168" height="1344" alt="tenebrinet" src="https://github.com/user-attachments/assets/1ab1ad87-781a-4b93-948b-efba922e4efd" />
+<img width="100%" alt="tenebrinet" src="assets/tenebrinet.png" />
 
 # TENEBRINET
 
