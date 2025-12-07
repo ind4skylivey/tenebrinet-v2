@@ -43,7 +43,7 @@ _(Where code whispers in the shadows)_
 - [x] **HTTP Honeypot** - WordPress simulation & web attack detection
 - [x] **FTP Honeypot** - File transfer simulation & credential capture
 - [x] **REST API** - FastAPI endpoints for attack data access
-- [ ] **ML Pipeline** - Initial threat classification model
+- [x] **ML Pipeline** - Initial threat classification model
 - [ ] **Dashboard** - Real-time visualization
 
 ---
@@ -53,7 +53,7 @@ _(Where code whispers in the shadows)_
 | Module                   | Functionality                                                                            |  Status   |
 | :----------------------- | :--------------------------------------------------------------------------------------- | :-------: |
 | **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `ACTIVE`  |
-| **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `PLANNED` |
+| **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `ACTIVE`  |
 | **🗺️ Panopticon View**   | Interactive dashboard with global real-time attack map.                                  | `PLANNED` |
 | **📡 Threat Feed**       | Intelligence integration with **AbuseIPDB, VirusTotal, Shodan**.                         | `PLANNED` |
 | **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `PARTIAL` |

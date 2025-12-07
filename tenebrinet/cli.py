@@ -349,5 +349,19 @@ def initdb() -> None:
         raise SystemExit(1)
 
 
+@main.command()
+def train() -> None:
+    """Train the ML threat classifier."""
+    from scripts.train_model import train as train_model
+
+    click.echo("🧠 Starting ML model training...")
+    try:
+        asyncio.run(train_model())
+        click.echo("✅ Training completed.")
+    except Exception as e:
+        click.echo(f"❌ Training failed: {e}", err=True)
+        raise SystemExit(1)
+
+
 if __name__ == "__main__":
     main()
