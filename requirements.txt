@@ -1,5 +1,4 @@
 # Core
-python>=3.10
 asyncio
 aiofiles
 
@@ -29,6 +28,9 @@ python-dotenv>=1.0.0
 pyyaml>=6.0
 click>=8.1.0
 rich>=13.0.0
+
+# Logging
+structlog>=23.0.0
 
 # Monitoring
 prometheus-client>=0.17.0

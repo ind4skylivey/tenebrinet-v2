@@ -32,6 +32,15 @@ _(Where code whispers in the shadows)_
 
 **TenebriNET** is not just a honeypot; it is an **ML-powered threat intelligence infrastructure**. Engineered for security researchers and Red Teamers who need to dissect how adversaries operate in the wild. It captures, analyzes, and visualizes attack vectors in real-time, turning darkness into actionable data.
 
+### 🚧 Development Status
+
+- [x] **Core Architecture** - Project structure & configuration
+- [x] **Base Services** - `BaseHoneypotService` abstract implementation
+- [ ] **SSH Honeypot** - Credential capture & emulation
+- [ ] **Data Layer** - PostgreSQL models & Redis caching
+- [ ] **Logging** - Structured async logging with `structlog`
+- [ ] **ML Pipeline** - Initial threat classification model
+
 ---
 
 ## 👁️ // OPERATIVE_MODULES
