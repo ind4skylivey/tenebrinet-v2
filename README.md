@@ -40,8 +40,8 @@ _(Where code whispers in the shadows)_
 - [x] **Logging** - Structured async logging with `structlog`
 - [x] **Configuration** - YAML loader with env var substitution & validation
 - [x] **SSH Honeypot** - Credential capture & shell emulation
+- [x] **HTTP Honeypot** - WordPress simulation & web attack detection
 - [x] **REST API** - FastAPI endpoints for attack data access
-- [ ] **HTTP Honeypot** - Web-based attack capture
 - [ ] **FTP Honeypot** - File transfer attack capture
 - [ ] **ML Pipeline** - Initial threat classification model
 - [ ] **Dashboard** - Real-time visualization

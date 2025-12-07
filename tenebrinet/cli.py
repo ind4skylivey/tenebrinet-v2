@@ -87,6 +87,7 @@ def start(config: str, log_level: str) -> None:
 
 async def _run_services(cfg) -> None:
     """Run all honeypot services."""
+    from tenebrinet.services.http import HTTPHoneypot
     from tenebrinet.services.ssh import SSHHoneypot
 
     # Initialize database
@@ -103,6 +104,16 @@ async def _run_services(cfg) -> None:
         click.echo(
             f"   🔐 SSH Honeypot: listening on "
             f"{cfg.services.ssh.host}:{cfg.services.ssh.port}"
+        )
+
+    # Start HTTP honeypot if enabled
+    if cfg.services.http.enabled:
+        http_honeypot = HTTPHoneypot(cfg.services.http)
+        await http_honeypot.start()
+        services.append(http_honeypot)
+        click.echo(
+            f"   🌐 HTTP Honeypot: listening on "
+            f"{cfg.services.http.host}:{cfg.services.http.port}"
         )
 
     click.echo("\n✅ All services started. Press Ctrl+C to stop.\n")
@@ -223,6 +234,7 @@ async def _run_combined(cfg, api_port: int) -> None:
     """Run honeypot services and API together."""
     import uvicorn
 
+    from tenebrinet.services.http import HTTPHoneypot
     from tenebrinet.services.ssh import SSHHoneypot
 
     # Initialize database
@@ -238,6 +250,15 @@ async def _run_combined(cfg, api_port: int) -> None:
         services.append(ssh_honeypot)
         click.echo(
             f"   🔐 SSH: {cfg.services.ssh.host}:{cfg.services.ssh.port}"
+        )
+
+    # Start HTTP honeypot if enabled
+    if cfg.services.http.enabled:
+        http_honeypot = HTTPHoneypot(cfg.services.http)
+        await http_honeypot.start()
+        services.append(http_honeypot)
+        click.echo(
+            f"   🌐 HTTP: {cfg.services.http.host}:{cfg.services.http.port}"
         )
 
     click.echo(f"   🌐 API: http://0.0.0.0:{api_port}/docs")
