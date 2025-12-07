@@ -1,6 +1,7 @@
 <div align="center">
 
 # 🌑 TenebriNET
+<img width="3168" height="1344" alt="tenebrinet" src="https://github.com/user-attachments/assets/fd9b9259-86b4-454c-a26b-9ad6f3e9a9fb" />
 
 ### Intelligent Honeypot Infrastructure
 
@@ -198,11 +199,6 @@ If you use TenebriNET in your research, please cite:
 
 [MIT License](LICENSE) - see LICENSE for details.
 
-## 🌟 Star History
-
-![Star History Chart](https://api.star-history.com/svg?repos=ind4skylivey/tenebrinet&type=Date)
-
----
 
 <div align="center">
 
