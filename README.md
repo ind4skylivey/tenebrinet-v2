@@ -41,8 +41,8 @@ _(Where code whispers in the shadows)_
 - [x] **Configuration** - YAML loader with env var substitution & validation
 - [x] **SSH Honeypot** - Credential capture & shell emulation
 - [x] **HTTP Honeypot** - WordPress simulation & web attack detection
+- [x] **FTP Honeypot** - File transfer simulation & credential capture
 - [x] **REST API** - FastAPI endpoints for attack data access
-- [ ] **FTP Honeypot** - File transfer attack capture
 - [ ] **ML Pipeline** - Initial threat classification model
 - [ ] **Dashboard** - Real-time visualization
 
@@ -52,11 +52,11 @@ _(Where code whispers in the shadows)_
 
 | Module                   | Functionality                                                                            |  Status   |
 | :----------------------- | :--------------------------------------------------------------------------------------- | :-------: |
-| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `PARTIAL` |
+| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `ACTIVE`  |
 | **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `PLANNED` |
 | **🗺️ Panopticon View**   | Interactive dashboard with global real-time attack map.                                  | `PLANNED` |
 | **📡 Threat Feed**       | Intelligence integration with **AbuseIPDB, VirusTotal, Shodan**.                         | `PLANNED` |
-| **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `PLANNED` |
+| **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `PARTIAL` |
 | **🐳 Dockerized**        | One-command deployment for total environment isolation.                                  |  `READY`  |
 | **🌐 REST API**          | FastAPI-based API for accessing attack data and statistics.                              | `ACTIVE`  |
 

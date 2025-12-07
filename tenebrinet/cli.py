@@ -87,6 +87,7 @@ def start(config: str, log_level: str) -> None:
 
 async def _run_services(cfg) -> None:
     """Run all honeypot services."""
+    from tenebrinet.services.ftp import FTPHoneypot
     from tenebrinet.services.http import HTTPHoneypot
     from tenebrinet.services.ssh import SSHHoneypot
 
@@ -114,6 +115,16 @@ async def _run_services(cfg) -> None:
         click.echo(
             f"   🌐 HTTP Honeypot: listening on "
             f"{cfg.services.http.host}:{cfg.services.http.port}"
+        )
+
+    # Start FTP honeypot if enabled
+    if cfg.services.ftp.enabled:
+        ftp_honeypot = FTPHoneypot(cfg.services.ftp)
+        await ftp_honeypot.start()
+        services.append(ftp_honeypot)
+        click.echo(
+            f"   📂 FTP Honeypot: listening on "
+            f"{cfg.services.ftp.host}:{cfg.services.ftp.port}"
         )
 
     click.echo("\n✅ All services started. Press Ctrl+C to stop.\n")
@@ -234,6 +245,7 @@ async def _run_combined(cfg, api_port: int) -> None:
     """Run honeypot services and API together."""
     import uvicorn
 
+    from tenebrinet.services.ftp import FTPHoneypot
     from tenebrinet.services.http import HTTPHoneypot
     from tenebrinet.services.ssh import SSHHoneypot
 
@@ -261,7 +273,16 @@ async def _run_combined(cfg, api_port: int) -> None:
             f"   🌐 HTTP: {cfg.services.http.host}:{cfg.services.http.port}"
         )
 
-    click.echo(f"   🌐 API: http://0.0.0.0:{api_port}/docs")
+    # Start FTP honeypot if enabled
+    if cfg.services.ftp.enabled:
+        ftp_honeypot = FTPHoneypot(cfg.services.ftp)
+        await ftp_honeypot.start()
+        services.append(ftp_honeypot)
+        click.echo(
+            f"   📂 FTP: {cfg.services.ftp.host}:{cfg.services.ftp.port}"
+        )
+
+    click.echo(f"   📶 API: http://0.0.0.0:{api_port}/docs")
     click.echo("\n✅ All services started. Press Ctrl+C to stop.\n")
 
     # Run API server
