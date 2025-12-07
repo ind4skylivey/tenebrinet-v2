@@ -6,6 +6,7 @@ Provides CLI commands for starting the honeypot services, managing
 configuration, and monitoring system health.
 """
 import asyncio
+from typing import Any, List
 
 import click
 import structlog
@@ -95,7 +96,7 @@ async def _run_services(cfg) -> None:
     await init_db()
     logger.info("database_initialized")
 
-    services = []
+    services: List[Any] = []
 
     # Start SSH honeypot if enabled
     if cfg.services.ssh.enabled:
@@ -253,7 +254,7 @@ async def _run_combined(cfg, api_port: int) -> None:
     await init_db()
     logger.info("database_initialized")
 
-    services = []
+    services: List[Any] = []
 
     # Start SSH honeypot if enabled
     if cfg.services.ssh.enabled:

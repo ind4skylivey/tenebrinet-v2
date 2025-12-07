@@ -33,5 +33,5 @@ EXPOSE 2222 8080 2121 8000
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
     CMD curl -f http://localhost:8000/health || exit 1
 
-# Run application
-CMD ["python", "-m", "tenebrinet.cli", "--config", "config/honeypot.yml"]
+# Run application in combined mode (honeypots + API)
+CMD ["python", "-m", "tenebrinet.cli", "run", "--config", "config/honeypot.yml"]

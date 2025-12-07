@@ -41,6 +41,7 @@ class FTPServiceConfig(BaseModel):
     port: int = 2121
     host: str = "0.0.0.0"
     anonymous_allowed: bool = True
+    timeout: int = 30
 
 
 class ServicesConfig(BaseModel):
