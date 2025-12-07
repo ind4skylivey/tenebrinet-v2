@@ -1,0 +1,58 @@
+# TenebriNET Configuration File
+# Environment variables can be substituted using ${VAR_NAME} or ${VAR_NAME:default}
+
+services:
+  ssh:
+    enabled: true
+    port: ${SSH_PORT:2222}
+    host: "0.0.0.0"
+    banner: "OpenSSH_8.2p1 Ubuntu-4ubuntu0.5"
+    max_connections: 100
+    timeout: 30
+
+  http:
+    enabled: true
+    port: ${HTTP_PORT:8080}
+    host: "0.0.0.0"
+    fake_cms: "WordPress 5.8"
+    serve_files: true
+
+  ftp:
+    enabled: true
+    port: ${FTP_PORT:2121}
+    host: "0.0.0.0"
+    anonymous_allowed: true
+
+database:
+  url: "${DATABASE_URL:postgresql+asyncpg://tenebrinet:tenebripass@localhost:5432/tenebrinet}"
+  pool_size: 10
+  max_overflow: 20
+  echo: false
+
+redis:
+  url: "${REDIS_URL:redis://localhost:6379/0}"
+
+ml:
+  model_path: "data/models/threat_classifier.joblib"
+  retrain_interval: "24h"
+  confidence_threshold: 0.7
+  features:
+    - packet_size
+    - connection_duration
+    - command_frequency
+    - authentication_attempts
+
+threat_intel:
+  abuseipdb:
+    enabled: true
+    api_key: "${ABUSEIPDB_API_KEY:your_api_key_here}"
+    check_on_connect: true
+  virustotal:
+    enabled: false
+    api_key: null
+
+logging:
+  level: "${LOG_LEVEL:INFO}"
+  format: "json"
+  output: "data/logs/tenebrinet.log"
+  rotation: "100 MB"

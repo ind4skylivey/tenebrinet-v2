@@ -46,14 +46,14 @@ _(Where code whispers in the shadows)_
 
 ## 👁️ // OPERATIVE_MODULES
 
-| Module                   | Functionality                                                                            |  Status  |
-| :----------------------- | :--------------------------------------------------------------------------------------- | :------: |
-| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `ACTIVE` |
-| **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `ONLINE` |
-| **🗺️ Panopticon View**   | Interactive dashboard with global real-time attack map.                                  | `ONLINE` |
-| **📡 Threat Feed**       | Intelligence integration with **AbuseIPDB, VirusTotal, Shodan**.                         | `LINKED` |
-| **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `READY`  |
-| **🐳 Dockerized**        | One-command deployment for total environment isolation.                                  | `READY`  |
+| Module                   | Functionality                                                                            |  Status   |
+| :----------------------- | :--------------------------------------------------------------------------------------- | :-------: |
+| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `PLANNED` |
+| **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `PLANNED` |
+| **🗺️ Panopticon View**   | Interactive dashboard with global real-time attack map.                                  | `PLANNED` |
+| **📡 Threat Feed**       | Intelligence integration with **AbuseIPDB, VirusTotal, Shodan**.                         | `PLANNED` |
+| **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `PLANNED` |
+| **🐳 Dockerized**        | One-command deployment for total environment isolation.                                  |  `READY`  |
 
 ---
 

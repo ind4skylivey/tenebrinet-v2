@@ -1,0 +1,153 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tenebrinet"
+version = "0.1.0"
+description = "Intelligent Honeypot Infrastructure - ML-powered threat intelligence"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [
+    {name = "ind4skylivey", email = "ind4skylivey@example.com"}
+]
+requires-python = ">=3.10"
+keywords = ["honeypot", "security", "threat-intelligence", "machine-learning", "cybersecurity"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Security",
+    "Topic :: System :: Networking :: Monitoring",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "aiofiles>=24.0.0",
+    "asyncssh>=2.13.0",
+    "aiohttp>=3.8.0",
+    "fastapi>=0.100.0",
+    "uvicorn[standard]>=0.22.0",
+    "websockets>=11.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.11.0",
+    "asyncpg>=0.28.0",
+    "redis>=4.5.0",
+    "scikit-learn>=1.3.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "joblib>=1.3.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0",
+    "click>=8.1.0",
+    "rich>=13.0.0",
+    "structlog>=23.0.0",
+    "prometheus-client>=0.17.0",
+    "aiohttp-retry>=2.8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.11.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.4.0",
+    "pylint>=2.17.0",
+    "types-PyYAML>=6.0.0",
+    "types-redis>=4.0.0",
+]
+docs = [
+    "mkdocs>=1.5.0",
+    "mkdocs-material>=9.1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/ind4skylivey/tenebrinet"
+Documentation = "https://github.com/ind4skylivey/tenebrinet/wiki"
+Repository = "https://github.com/ind4skylivey/tenebrinet"
+Issues = "https://github.com/ind4skylivey/tenebrinet/issues"
+
+[project.scripts]
+tenebrinet = "tenebrinet.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["tenebrinet*"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+ignore_missing_imports = true
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+show_error_codes = true
+namespace_packages = true
+explicit_package_bases = true
+
+[tool.black]
+line-length = 88
+target-version = ['py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.venv
+    | venv
+    | build
+    | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["tenebrinet"]
+skip = [".git", ".venv", "venv", "build", "dist"]
+
+[tool.flake8]
+max-line-length = 88
+extend-ignore = ["E203", "W503"]
+exclude = [".git", ".venv", "venv", "__pycache__", "build", "dist"]
+
+[tool.coverage.run]
+source = ["tenebrinet"]
+branch = true
+omit = ["tests/*", "*/__pycache__/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
+]

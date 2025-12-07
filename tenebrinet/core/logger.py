@@ -1,32 +1,42 @@
-# tenebrinet/core/logger.py (Final Final Attempt for this issue, focusing on ProcessorFormatter's __init__)
+# tenebrinet/core/logger.py
+"""
+Structured logging configuration for TenebriNET.
+
+Provides a structured logging setup using structlog with support
+for JSON and console output formats, with rotating file handlers.
+"""
 import logging
-import structlog
-import sys
 import os
+import sys
 from logging.handlers import RotatingFileHandler
-from structlog.stdlib import ProcessorFormatter # Explicitly import ProcessorFormatter
+
+import structlog
+from structlog.stdlib import ProcessorFormatter
+
 
 def configure_logger(
     log_level: str = "INFO",
     log_format: str = "json",
     log_output_path: str = "data/logs/tenebrinet.log",
-    log_rotation_mb: int = 100
-):
+    log_rotation_mb: int = 100,
+) -> None:
     """
-    Configures the structlog-based logger for the TenebriNET application.
+    Configure the structlog-based logger for TenebriNET.
 
     Args:
-        log_level: The minimum logging level to output (e.g., "DEBUG", "INFO", "WARNING", "ERROR").
-        log_format: The format of the log output ("json" or "console").
-        log_output_path: The file path for log output.
-        log_rotation_mb: The maximum size of the log file before rotation, in MB.
+        log_level: Minimum logging level
+            (DEBUG, INFO, WARNING, ERROR, CRITICAL).
+        log_format: Output format - "json" for structured logs,
+            "console" for dev.
+        log_output_path: File path for log output.
+        log_rotation_mb: Maximum size in MB before log rotation.
     """
-    # Clear existing handlers from root logger to prevent duplicates during re-configuration in tests
+    # Clear existing handlers to prevent duplicates during re-configuration
     root_logger = logging.getLogger()
     for handler in root_logger.handlers[:]:
         root_logger.removeHandler(handler)
-    
-    # Processors for structlog.configure - these enrich the event dict.
+
+    # Configure structlog processors for event dict enrichment
     structlog.configure(
         processors=[
             structlog.stdlib.add_logger_name,
@@ -43,8 +53,6 @@ def configure_logger(
                     structlog.processors.CallsiteParameter.THREAD_NAME,
                 }
             ),
-            # This hands off the event dict to the standard logging system.
-            # The dict is put into record.msg
             ProcessorFormatter.wrap_for_formatter,
         ],
         logger_factory=structlog.stdlib.LoggerFactory(),
@@ -52,17 +60,17 @@ def configure_logger(
         cache_logger_on_first_use=True,
     )
 
-    # Processors that ProcessorFormatter will use to render the event dict (which is in record.msg)
-    final_rendering_processors = [
-        structlog.processors.JSONRenderer() if log_format == "json" else structlog.dev.ConsoleRenderer()
-    ]
+    # Select final rendering processor based on format
+    final_rendering_processors: list = []
+    if log_format == "json":
+        final_rendering_processors.append(structlog.processors.JSONRenderer())
+    else:
+        final_rendering_processors.append(structlog.dev.ConsoleRenderer())
 
-    # Configure the standard Python logging for routing structlog events.
-    # ProcessorFormatter *is* a logging.Formatter, so fmt goes directly to it.
-    # The 'processors' kwarg is for the structlog processors it will run.
+    # Create the formatter with structlog processors
     formatter = ProcessorFormatter(
-        fmt="%(message)s", # Pass fmt directly to ProcessorFormatter
-        processors=final_rendering_processors
+        fmt="%(message)s",
+        processors=final_rendering_processors,
     )
 
     # Ensure log directory exists
@@ -73,9 +81,9 @@ def configure_logger(
     # File handler with rotation
     file_handler = RotatingFileHandler(
         log_output_path,
-        maxBytes=log_rotation_mb * 1024 * 1024, # Convert MB to Bytes
-        backupCount=5, # Keep 5 backup logs
-        encoding='utf8'
+        maxBytes=log_rotation_mb * 1024 * 1024,
+        backupCount=5,
+        encoding="utf8",
     )
     file_handler.setFormatter(formatter)
 
@@ -83,11 +91,12 @@ def configure_logger(
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(formatter)
 
+    # Configure root logger
     root_logger.addHandler(file_handler)
     root_logger.addHandler(console_handler)
     root_logger.setLevel(log_level.upper())
 
-    # Suppress noise from libraries
+    # Suppress noise from third-party libraries
     logging.getLogger("uvicorn").propagate = False
     logging.getLogger("uvicorn.access").propagate = False
     logging.getLogger("asyncio").propagate = False
