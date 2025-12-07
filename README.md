@@ -39,8 +39,12 @@ _(Where code whispers in the shadows)_
 - [x] **Data Layer** - PostgreSQL models & async session management
 - [x] **Logging** - Structured async logging with `structlog`
 - [x] **Configuration** - YAML loader with env var substitution & validation
-- [ ] **SSH Honeypot** - Credential capture & emulation
+- [x] **SSH Honeypot** - Credential capture & shell emulation
+- [x] **REST API** - FastAPI endpoints for attack data access
+- [ ] **HTTP Honeypot** - Web-based attack capture
+- [ ] **FTP Honeypot** - File transfer attack capture
 - [ ] **ML Pipeline** - Initial threat classification model
+- [ ] **Dashboard** - Real-time visualization
 
 ---
 
@@ -48,12 +52,13 @@ _(Where code whispers in the shadows)_
 
 | Module                   | Functionality                                                                            |  Status   |
 | :----------------------- | :--------------------------------------------------------------------------------------- | :-------: |
-| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `PLANNED` |
+| **🕸️ Digital Simulacra** | High-fidelity emulation of **SSH, HTTP, FTP** services with realistic interactions.      | `PARTIAL` |
 | **🧠 Neural Heuristics** | ML Engine that automatically classifies attacks (Recon, Brute Force, Exploits, Botnets). | `PLANNED` |
 | **🗺️ Panopticon View**   | Interactive dashboard with global real-time attack map.                                  | `PLANNED` |
 | **📡 Threat Feed**       | Intelligence integration with **AbuseIPDB, VirusTotal, Shodan**.                         | `PLANNED` |
 | **📼 Forensic Replay**   | Full recording of attack sessions for post-incident forensic analysis.                   | `PLANNED` |
 | **🐳 Dockerized**        | One-command deployment for total environment isolation.                                  |  `READY`  |
+| **🌐 REST API**          | FastAPI-based API for accessing attack data and statistics.                              | `ACTIVE`  |
 
 ---
 
