@@ -15,10 +15,10 @@ _(Where code whispers in the shadows)_
 [![Python](https://img.shields.io/badge/python-3.10+-7b2cbf?style=for-the-badge&logo=python&labelColor=0d1117&logoColor=white)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-MIT-1a0033?style=for-the-badge&labelColor=0d1117&color=525252)](LICENSE)
 
-[📡 INTEL](#--intel) •
-[⚡ DEPLOY](#--deploy) •
-[💀 ARCHITECTURE](#--architecture) •
-[👁️ RECON](#--recon)
+[📡 INTEL](#intel) •
+[⚡ DEPLOY](#deploy) •
+[💀 ARCHITECTURE](#architecture) •
+[👁️ RECON](#recon)
 
 </div>
 
@@ -55,7 +55,7 @@ _(Where code whispers in the shadows)_
 
 ---
 
-## 👁️ // RECON
+## <a id="recon"></a>👁️ // RECON
 
 | Module                   | Functionality                                                                            |  Status   |
 | :----------------------- | :--------------------------------------------------------------------------------------- | :-------: |
@@ -69,7 +69,7 @@ _(Where code whispers in the shadows)_
 
 ---
 
-## ⚡ // DEPLOY
+## <a id="deploy"></a>⚡ // DEPLOY
 
 ### System Requirements
 
@@ -106,7 +106,7 @@ python -m tenebrinet.cli run
 # > http://localhost:8080
 ```
 
-## 💀 // ARCHITECTURE
+## <a id="architecture"></a>💀 // ARCHITECTURE
 
 ```mermaid
 graph TD
@@ -124,7 +124,7 @@ graph TD
 
 ````
 
-## 📡 // INTEL
+## <a id="intel"></a>📡 // INTEL
 
 > **INTELLIGENCE EXTRACTION PROTOCOL**
 
