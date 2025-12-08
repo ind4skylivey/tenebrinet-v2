@@ -38,5 +38,9 @@ Thumbs.db
 # Docker
 .docker/
 
-# Internal scripts
-scripts/
+# Internal scripts (ignore recording/demo scripts, but keep essential ones)
+scripts/record_*.sh
+scripts/*_demo.sh
+*.mp4
+*.gif
+!assets/*.gif
