@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Uptime counter
     startUptimeCounter();
+
+    // DEMO MODE: Auto-cycle tabs for recording
+    let tabs = ['dashboard', 'attacks', 'map', 'settings'];
+    let currentTab = 0;
+    setInterval(() => {
+        currentTab = (currentTab + 1) % tabs.length;
+        const tabId = tabs[currentTab];
+        document.querySelector(`[data-tab="${tabId}"]`).click();
+    }, 5000);
 });
 
 function initNavigation() {
@@ -128,9 +137,6 @@ function initMap() {
         attribution: '&copy; OpenStreetMap contributors',
         maxZoom: 19
     }).addTo(map);
-
-    // Add CSS filter to make standard map look "Dark Mode"
-    document.querySelector('.leaflet-tile-pane').style.filter = 'invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%)';
 
     // Add some initial sample markers to show it's working immediately
     const samples = [

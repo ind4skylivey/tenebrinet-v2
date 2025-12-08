@@ -367,3 +367,8 @@ h1 {
   color: var(--accent-warning);
   margin-right: 0.5rem;
 }
+
+/* Map Dark Mode Filter */
+#threat-map .leaflet-tile-pane {
+  filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%);
+}
