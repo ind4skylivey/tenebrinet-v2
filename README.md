@@ -13,7 +13,7 @@ _(Where code whispers in the shadows)_
 [![Build Status](https://img.shields.io/github/actions/workflow/status/ind4skylivey/tenebrinet/ci.yml?branch=main&style=for-the-badge&color=0d1117&labelColor=7b2cbf)](https://github.com/ind4skylivey/tenebrinet/actions)
 [![Security](https://img.shields.io/badge/security-HARDENED-00ff9f?style=for-the-badge&labelColor=0d1117&color=b00020)]()
 [![Python](https://img.shields.io/badge/python-3.10+-7b2cbf?style=for-the-badge&logo=python&labelColor=0d1117&logoColor=white)](https://www.python.org)
-[![License](https://img.shields.io/badge/license-MIT-1a0033?style=for-the-badge&labelColor=0d1117&color=525252)](LICENSE)
+[![License](https://img.shields.io/badge/license-PROPRIETARY-ff0000?style=for-the-badge&labelColor=0d1117&color=b00020)](LICENSE)
 
 [📡 INTEL](#intel) •
 [⚡ DEPLOY](#deploy) •

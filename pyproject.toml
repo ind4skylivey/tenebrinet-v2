@@ -7,7 +7,7 @@ name = "tenebrinet"
 version = "0.1.0"
 description = "Intelligent Honeypot Infrastructure - ML-powered threat intelligence"
 readme = "README.md"
-license = {text = "MIT"}
+license = {text = "Proprietary"}
 authors = [
     {name = "ind4skylivey", email = "ind4skylivey@example.com"}
 ]
@@ -17,7 +17,7 @@ classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Intended Audience :: Information Technology",
-    "License :: OSI Approved :: MIT License",
+    "License :: Other/Proprietary License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
