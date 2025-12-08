@@ -23,15 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Uptime counter
     startUptimeCounter();
-
-    // DEMO MODE: Auto-cycle tabs for recording
-    let tabs = ['dashboard', 'attacks', 'map', 'settings'];
-    let currentTab = 0;
-    setInterval(() => {
-        currentTab = (currentTab + 1) % tabs.length;
-        const tabId = tabs[currentTab];
-        document.querySelector(`[data-tab="${tabId}"]`).click();
-    }, 5000);
 });
 
 function initNavigation() {
