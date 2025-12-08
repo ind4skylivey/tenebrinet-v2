@@ -130,6 +130,10 @@ graph TD
 
 TenebriNET aggregates raw attack data into actionable intelligence through its Neural Engine.
 
+[![Join Intel Exchange](https://img.shields.io/badge/INTEL_EXCHANGE-JOIN_CHANNEL-7b2cbf?style=for-the-badge&logo=github)](https://github.com/ind4skylivey/tenebrinet/discussions)
+
+> **Have you detected a new anomaly?** [Initiate a Discussion Protocol](https://github.com/ind4skylivey/tenebrinet/discussions) to share signatures and analyze patterns with the alliance.
+
 ```text
 [!] THREAT_CLASSIFICATION_MATRIX
 
