@@ -23,6 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Uptime counter
     startUptimeCounter();
+
+    // DEMO MODE: Auto-cycle tabs for recording
+    let tabs = ['dashboard', 'attacks', 'map', 'settings'];
+    let currentTab = 0;
+    setInterval(() => {
+        currentTab = (currentTab + 1) % tabs.length;
+        const tabId = tabs[currentTab];
+        document.querySelector(`[data-tab="${tabId}"]`).click();
+    }, 5000);
 });
 
 function initNavigation() {
@@ -43,7 +52,15 @@ function initNavigation() {
             if (targetView) {
                 targetView.classList.add('active');
                 if (tabId === 'map') {
-                    setTimeout(initMap, 100); // Small delay to ensure container is visible
+                    // If map is not initialized, init it.
+                    if (!map) {
+                        setTimeout(initMap, 100);
+                    } else {
+                        // If already initialized, we MUST invalidate size to fix rendering in hidden div
+                        setTimeout(() => {
+                            map.invalidateSize();
+                        }, 100);
+                    }
                 }
             }
         });
@@ -121,6 +138,24 @@ function initMap() {
         subdomains: 'abcd',
         maxZoom: 19
     }).addTo(map);
+
+    // Add some initial sample markers to show it's working immediately
+    const samples = [
+        {lat: 40.7128, lng: -74.0060, ip: "192.168.1.5", type: "SSH_BRUTE_FORCE"},
+        {lat: 51.5074, lng: -0.1278, ip: "10.0.0.2", type: "HTTP_SQLI"},
+        {lat: 35.6762, lng: 139.6503, ip: "172.16.0.8", type: "PORT_SCAN"}
+    ];
+
+    samples.forEach(s => {
+        L.circleMarker([s.lat, s.lng], {
+            radius: 6,
+            fillColor: '#ef4444',
+            color: '#fff',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map).bindPopup(`<b>${s.ip}</b><br>${s.type}`);
+    });
 }
 
 async function updateDashboard() {
