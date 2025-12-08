@@ -42,6 +42,9 @@ function initNavigation() {
             const targetView = document.getElementById(`${tabId}-view`);
             if (targetView) {
                 targetView.classList.add('active');
+                if (tabId === 'map') {
+                    setTimeout(initMap, 100); // Small delay to ensure container is visible
+                }
             }
         });
     });
@@ -103,6 +106,23 @@ function initCharts() {
     });
 }
 
+let map;
+let markers = [];
+
+function initMap() {
+    if (map) return; // Already initialized
+
+    // Initialize Leaflet Map
+    map = L.map('threat-map').setView([20, 0], 2); // World view
+
+    // Dark Mode Tile Layer (CartoDB Dark Matter)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    }).addTo(map);
+}
+
 async function updateDashboard() {
     try {
         const [stats, attacks] = await Promise.all([
@@ -114,6 +134,7 @@ async function updateDashboard() {
         updateCharts(stats);
         updateRecentAttacks(attacks.items);
         updateTerminalFeed(attacks.items);
+        updateMap(attacks.items);
 
     } catch (error) {
         console.error('Failed to update dashboard:', error);
@@ -232,4 +253,36 @@ function startUptimeCounter() {
         document.getElementById('uptime').innerText =
             `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }, 1000);
+}
+
+function updateMap(attacks) {
+    if (!map) return;
+
+    // Clear existing markers
+    markers.forEach(marker => map.removeLayer(marker));
+    markers = [];
+
+    attacks.forEach(attack => {
+        // Simulate coordinates based on IP (In a real app, use GeoIP)
+        // This is a dummy randomization for demo purposes
+        const lat = (Math.random() * 140) - 70;
+        const lng = (Math.random() * 360) - 180;
+
+        const marker = L.circleMarker([lat, lng], {
+            radius: 6,
+            fillColor: '#ef4444',
+            color: '#fff',
+            weight: 1,
+            opacity: 1,
+            fillOpacity: 0.8
+        }).addTo(map);
+
+        marker.bindPopup(`
+            <b>${attack.ip}</b><br>
+            ${attack.threat_type}<br>
+            ${attack.service.toUpperCase()}
+        `);
+
+        markers.push(marker);
+    });
 }
