@@ -3,7 +3,7 @@
 **Name:** TenebriNET  
 **Tagline:** "Capture what hides in the dark"  
 **Type:** ML-powered honeypot infrastructure  
-**Repo:** https://github.com/ind4skylivey/tenebrinet  
+**Repo:** https://github.com/ind4skylivey/tenebrinet-v2  
 **Developer:** ind4skylivey (Livey Fleming)
 
 ## MISSION

@@ -73,10 +73,10 @@ docs = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/ind4skylivey/tenebrinet"
-Documentation = "https://github.com/ind4skylivey/tenebrinet/wiki"
-Repository = "https://github.com/ind4skylivey/tenebrinet"
-Issues = "https://github.com/ind4skylivey/tenebrinet/issues"
+Homepage = "https://github.com/ind4skylivey/tenebrinet-v2"
+Documentation = "https://github.com/ind4skylivey/tenebrinet-v2/wiki"
+Repository = "https://github.com/ind4skylivey/tenebrinet-v2"
+Issues = "https://github.com/ind4skylivey/tenebrinet-v2/issues"
 
 [project.scripts]
 tenebrinet = "tenebrinet.cli:main"

@@ -323,7 +323,7 @@ python scripts/train_classifier.py --input training.csv --output models/classifi
 
 ## 🤝 Contributing
 
-TenebriNET is **proprietary**, but I welcome collaboration from trusted researchers. If you have ideas for new features, ML improvements, or integration modules, reach out via [GitHub Discussions](https://github.com/ind4skylivey/tenebrinet/discussions).
+TenebriNET is **proprietary**, but I welcome collaboration from trusted researchers. If you have ideas for new features, ML improvements, or integration modules, reach out via [GitHub Discussions](https://github.com/ind4skylivey/tenebrinet-v2/discussions).
 
 ---
 

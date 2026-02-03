@@ -10,13 +10,13 @@ _(Where code whispers in the shadows)_
 
 <br>
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/ind4skylivey/tenebrinet/ci.yml?branch=main&style=for-the-badge&color=0d1117&labelColor=7b2cbf)](https://github.com/ind4skylivey/tenebrinet/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/ind4skylivey/tenebrinet-v2-v2/ci.yml?branch=main&style=for-the-badge&color=0d1117&labelColor=7b2cbf)](https://github.com/ind4skylivey/tenebrinet-v2-v2/actions)
 [![Security](https://img.shields.io/badge/security-HARDENED-00ff9f?style=for-the-badge&labelColor=0d1117&color=b00020)]()
 [![Python](https://img.shields.io/badge/python-3.10+-7b2cbf?style=for-the-badge&logo=python&labelColor=0d1117&logoColor=white)](https://www.python.org)
 [![License](https://img.shields.io/badge/license-PROPRIETARY-ff0000?style=for-the-badge&labelColor=0d1117&color=b00020)](LICENSE)
 
-[📡 INTEL](https://github.com/ind4skylivey/tenebrinet/discussions/1) •
-[📖 GUIDE](https://github.com/ind4skylivey/tenebrinet/blob/main/docs/GUIDE.md) •
+[📡 INTEL](https://github.com/ind4skylivey/tenebrinet-v2/discussions/1) •
+[📖 GUIDE](https://github.com/ind4skylivey/tenebrinet-v2/blob/main/docs/GUIDE.md) •
 [⚡ DEPLOY](#deploy) •
 [💀 ARCHITECTURE](#architecture) •
 [👁️ RECON](#recon)
@@ -82,7 +82,7 @@ _(Where code whispers in the shadows)_
 
 ```bash
 # [1] Clone the repository from the shadows
-git clone https://github.com/ind4skylivey/tenebrinet.git
+git clone https://github.com/ind4skylivey/tenebrinet-v2.git
 cd tenebrinet
 
 # [2] Engage Docker Swarm (Recommended)
@@ -158,9 +158,9 @@ graph TD
 
 TenebriNET aggregates raw attack data into actionable intelligence through its Neural Engine.
 
-[![Join Intel Exchange](https://img.shields.io/badge/INTEL_EXCHANGE-JOIN_CHANNEL-7b2cbf?style=for-the-badge&logo=github)](https://github.com/ind4skylivey/tenebrinet/discussions)
+[![Join Intel Exchange](https://img.shields.io/badge/INTEL_EXCHANGE-JOIN_CHANNEL-7b2cbf?style=for-the-badge&logo=github)](https://github.com/ind4skylivey/tenebrinet-v2/discussions)
 
-> **Have you detected a new anomaly?** [Initiate a Discussion Protocol](https://github.com/ind4skylivey/tenebrinet/discussions) to share signatures and analyze patterns with the alliance.
+> **Have you detected a new anomaly?** [Initiate a Discussion Protocol](https://github.com/ind4skylivey/tenebrinet-v2/discussions) to share signatures and analyze patterns with the alliance.
 
 ```text
 [!] THREAT_CLASSIFICATION_MATRIX
@@ -207,7 +207,7 @@ Research Citation (BibTeX):
   title = {TenebriNET: Intelligent Honeypot Infrastructure},
   author = {Fleming, Livey},
   year = {2025},
-  url = {https://github.com/ind4skylivey/tenebrinet}
+  url = {https://github.com/ind4skylivey/tenebrinet-v2}
 }
 ```
 

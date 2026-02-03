@@ -27,7 +27,7 @@ Contributing to TenebriNET is a privilege, not a right. All contributions are su
 
 ```bash
 # Clone the repository
-git clone https://github.com/ind4skylivey/tenebrinet.git
+git clone https://github.com/ind4skylivey/tenebrinet-v2.git
 cd tenebrinet
 
 # Initialize virtual environment
