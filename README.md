@@ -116,6 +116,24 @@ python -m tenebrinet.cli run
 
 > **💡 Pro Tip:** Run `seed_database.py` to populate the dashboard with 150 realistic attack samples spanning 7 days. This gives you immediate visual feedback and helps understand TenebriNET's capabilities without waiting for real attacks.
 
+### Database Maintenance
+
+```bash
+# Clear all test/attack data for a fresh start
+./scripts/clean_database.sh
+
+# This removes:
+#   - All attack records
+#   - All session data
+#   - All captured credentials
+#   - Redis cache
+```
+
+Use this script when:
+- You want to clear test data before production deployment
+- After capturing screenshots or demo data
+- Starting a new monitoring session with clean slate
+
 ## <a id="architecture"></a>💀 // ARCHITECTURE
 
 ```mermaid
