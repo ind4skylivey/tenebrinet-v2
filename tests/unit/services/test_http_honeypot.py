@@ -39,12 +39,10 @@ class TestHTTPHoneypot:
         assert http_honeypot.fake_cms == http_config.fake_cms
         assert http_honeypot._running is False
 
-    def test_health_check_not_running(self, http_honeypot):
+    @pytest.mark.asyncio
+    async def test_health_check_not_running(self, http_honeypot):
         """Test health check when not running."""
-        import asyncio
-        result = asyncio.get_event_loop().run_until_complete(
-            http_honeypot.health_check()
-        )
+        result = await http_honeypot.health_check()
         assert result["service"] == "http_honeypot"
         assert result["running"] is False
         assert result["port"] == 8080
