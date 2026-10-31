@@ -38,12 +38,10 @@ class TestSSHHoneypot:
         assert ssh_honeypot.banner == ssh_config.banner
         assert ssh_honeypot._running is False
 
-    def test_health_check_not_running(self, ssh_honeypot):
+    @pytest.mark.asyncio
+    async def test_health_check_not_running(self, ssh_honeypot):
         """Test health check when not running."""
-        import asyncio
-        result = asyncio.get_event_loop().run_until_complete(
-            ssh_honeypot.health_check()
-        )
+        result = await ssh_honeypot.health_check()
         assert result["service"] == "ssh_honeypot"
         assert result["running"] is False
         assert result["port"] == 2222

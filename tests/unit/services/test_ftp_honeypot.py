@@ -41,12 +41,10 @@ class TestFTPHoneypot:
         assert ftp_honeypot.anonymous == ftp_config.anonymous_allowed
         assert ftp_honeypot._running is False
 
-    def test_health_check_not_running(self, ftp_honeypot):
+    @pytest.mark.asyncio
+    async def test_health_check_not_running(self, ftp_honeypot):
         """Test health check when not running."""
-        import asyncio
-        result = asyncio.get_event_loop().run_until_complete(
-            ftp_honeypot.health_check()
-        )
+        result = await ftp_honeypot.health_check()
         assert result["service"] == "ftp_honeypot"
         assert result["running"] is False
         assert result["port"] == 2121
